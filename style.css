@@ -1,8 +1,25 @@
 .calculator {
-    border: 2px solid black;
-    height: 200px;
-    width: 170px;
+    width: 275px;
+    margin: auto;
+    min-height: 400px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 50px -7px black;
+    background: #3A4655;
+    padding: 10px;
 }
 .display {
-    width: 170px;
+
+}
+.delete {
+
+}
+.clear {
+
+}
+.op {
+
+}
+.num {
+    
 }
