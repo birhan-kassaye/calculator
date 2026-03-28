@@ -1,15 +1,28 @@
-.calculator {
-    width: 275px;
-    margin: auto;
-    min-height: 400px;
+* {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 8px 50px -7px black;
-    background: #3A4655;
-    padding: 10px;
+    height: 100vh;
 }
-.display {
-
+.calculator {
+    width: 300px;
+    background-color: black;
+}
+#display {
+    height: 50px;
+    width: 100%;
+}
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+button {
+    font-size: 13px;
+    padding: 15px;
 }
 .delete {
 
