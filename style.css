@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 275px;
+    border: 1px solid red;
+}
+
+#display {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 65px;
+    gap: 0.5rem;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+    background: #425062;
+}
