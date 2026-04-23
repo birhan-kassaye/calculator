@@ -1,3 +1,36 @@
+const display = document.getElementById("display");
+const operators = document.querySelectorAll(".op");
+const numbers = document.querySelectorAll(".num");
+const equal = document.querySelector(".equal");
+
+let currentValue = "";
+let num1;
+let num2;
+let operator;
+
+numbers.forEach((num) => {
+    num.addEventListener("click", () => {
+        const digit = num.textContent;
+        currentValue += digit;
+        display.value = currentValue;
+    })
+});
+
+operators.forEach((op) => {
+    op.addEventListener("click", () => {
+        operator = op.textContent;
+        num1 = Number(currentValue);
+        currentValue =  "";
+        display.value = operator;
+    })
+});
+
+equal.addEventListener("click", () => {
+    num2 = Number(currentValue);
+    const result = operate(num1, operator, num2);
+    display.value = result;
+});
+
 function add(a, b) {
     return(a + b);
 }
@@ -17,10 +50,6 @@ function divide(a, b) {
         return (a / b);
     }
 }
-
-let num1
-let num2
-let operator
 
 function operate(num1, operator, num2) {
     if (operator === "+") {
