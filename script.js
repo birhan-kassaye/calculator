@@ -2,6 +2,7 @@ const display = document.getElementById("display");
 const operators = document.querySelectorAll(".op");
 const numbers = document.querySelectorAll(".num");
 const equal = document.querySelector(".equal");
+const clear = document.querySelector(".clear");
 
 let currentValue = "";
 let num1;
@@ -21,14 +22,18 @@ operators.forEach((op) => {
         operator = op.textContent;
         num1 = Number(currentValue);
         currentValue =  "";
-        display.value = operator;
     })
 });
 
 equal.addEventListener("click", () => {
     num2 = Number(currentValue);
+    display.value = `${num1} ${operator} ${currentValue}`
     const result = operate(num1, operator, num2);
     display.value = result;
+});
+
+clear.addEventListener("click", () => {
+    display.value = "";
 });
 
 function add(a, b) {
