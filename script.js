@@ -1,3 +1,4 @@
+// Get references to HTML elements
 const display = document.getElementById("display");
 const operators = document.querySelectorAll(".op");
 const numbers = document.querySelectorAll(".num");
@@ -9,32 +10,42 @@ let num1;
 let num2;
 let operator;
 
-numbers.forEach((num) => {
+numbers.forEach(num => {
     num.addEventListener("click", () => {
-        const digit = num.textContent;
-        currentValue += digit;
-        display.value = currentValue;
-    })
+        const digit = num.textContent;  // Get the clicked digit
+        if (currentValue === "0") {
+            currentValue += digit;
+            display.value = currentValue;
+        } else {
+            currentValue += digit;
+            display.value = currentValue;
+            // Extract the second number from the string (e.g., "5+3" -> "3")
+            num2 = Number(currentValue.split(operator)[1]);
+        }
+    });
 });
 
-operators.forEach((op) => {
+operators.forEach(op => {
     op.addEventListener("click", () => {
-        operator = op.textContent;
         num1 = Number(currentValue);
-        currentValue =  "";
-    })
+        operator = op.textContent;
+        currentValue += operator;
+        display.value = currentValue;
+    });
 });
 
 equal.addEventListener("click", () => {
-    num2 = Number(currentValue);
-    display.value = `${num1} ${operator} ${currentValue}`
     const result = operate(num1, operator, num2);
     display.value = result;
-});
+})
 
 clear.addEventListener("click", () => {
+    currentValue = "";
+    num1 = null;
+    num2 = null;
+    operator = null;
     display.value = "";
-});
+})
 
 function add(a, b) {
     return(a + b);
@@ -56,6 +67,7 @@ function divide(a, b) {
     }
 }
 
+// A function that takes two numbers and an operator, and performs the corresponding operation
 function operate(num1, operator, num2) {
     if (operator === "+") {
         return add(num1, num2);
